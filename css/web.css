@@ -1,0 +1,46 @@
+@charset "utf-8";
+@import url(reset.css);
+
+/* header */
+
+#header{width:100vw;height:90px;line-height:90px;position:fixed;top:0;left:0;padding:0 4%;z-index:99}
+#header *{vertical-align:middle}
+#header .logo{float:left}
+.menu_list{float:right;margin-top:30px}
+.menu_list li{float:left;margin-left:20px}
+.menu_list li a{display:block;color:#fff;font-size:24px;padding:0 15px;line-height:1.4;height:33px}
+.menu_list li.on a{background-color:#ec9100}
+
+/* container */
+
+#wrapper{min-width:1280px;min-height:800px;width:100vw;height:100vh;position:relative;background-color:#111;overflow-x:hidden}
+
+/* visual */
+
+.visual{width:100%;height:100%;position:absolute;top:50%;transform:translateY(-50%);background:url(../images/bg_visual.jpg) no-repeat right center / cover;padding:0 10%}
+.visual_list{width:100%;color:#fff;border:10px solid red}
+.visual_list .visual_cont{width:100%;display:none;background:url(../images/visual_img1.png) no-repeat left 60% / 55%;padding: 8% 0 8% 40%}
+.visual_list .visual_cont.on{display:block}
+
+.visual_cont strong{display:block;font-size:0;background:url(../images/visual_str1.png) no-repeat 0 0 / contain;height:19vw;padding:26% 0 0 50%;font-weight:normal}
+.visual_cont strong span{font-size:2vw;white-space:nowrap;line-height:1.5}
+.visual_info{font-size:1.4vw;line-height:2.3;padding-left:25%}
+
+.visual_btn{position:absolute;top:50%;left:0;width:100%;margin-top:-90px}
+.visual_btn a{display:block;font-size:0;width:90px;height:180px;position:absolute;top:50%;opacity:0.4;transition:opacity .5s ease}
+.visual_btn a:hover{opacity:1}
+.visual_btn a:after{content:'';position:absolute;top:70px;width:40px;height:40px;border-top:2px solid #fff;border-left:2px solid #fff;transform:rotate(-45deg)}
+.visual_btn a:before{content:'';position:absolute;top:0;left:0;border-radius:50%;width:180px;height:180px;background-color:#ec9100}
+.visual_btn a.prev_btn{left:-90px}
+.visual_btn a.next_btn{right:0px}
+
+.visual_btn a.prev_btn:after{left:110px}
+.visual_btn a.next_btn:after{left:30px;transform:rotate(135deg)}
+
+
+.visual_num{border:10px solid red;height:50px;width:200px;margin-left:55%}
+.visual_num a{}
+.visual_num a.on{}
+
+
+

@@ -1,0 +1,69 @@
+@charset "utf-8";
+@import url(reset.css);
+
+@media all and (max-width:1024px){
+ 
+ /*container*/
+ 
+ #wrapper{min-width:760px;width:100%;padding-left:50px;position:relative;overflow-x:hidden}
+ #container{width:100%;position:relative}
+ 
+ /*visual*/
+ 
+ .visual{width:100%;height:320px;padding:70px 0;background-attachment:local}
+ .visual_img{width:45%;margin-right:30px}
+ .visual_img img{width:250px}
+ 
+ .visual_txt img{width:70px;margin-bottom:25px}
+ .visual_txt .visual_h{font-size:28px}
+ .visual_txt .visual_p{display:none}
+ 
+ /*mag*/
+ 
+ .mag{margin:40px auto}
+ .cont_h2{font-size:21px;font-family:'NanumBarunGothic';margin-bottom:20px}
+ .mag_list{width:100%;height:360px;display:block}
+ .mag_list li.on{width:100%;height:300px}
+ .mag_list li.on a{padding:35px 0 35px 20px}
+ .mag_list li.on a img{height:25px}
+ 
+ .mag_list li{width:100%;height:30px}
+
+ .on .mag_info{margin-top:20px;font-size:22px}
+ .on .mag_tit{font-size:32px}
+ .on .mag_txt{font-size:16px;margin:15px 0;letter-spacing:-0.05em}
+ .on .mag_date{display:none}
+ 
+ /*article*/
+ 
+ .news{height:280px}
+ .news_list{height:280px}
+ .news_img{height:260px}
+ 
+ .news_tit,.event_tit{font-size:16px;margin-top:10px}
+ .news_txt,.event_txt{display:none}
+ .news_tit{margin-top:15px}
+  
+ .event_list li{margin-bottom:15px}
+ .event_img{height:130px}
+ .event_img img{min-width:320px}
+ 
+ /*notice*/
+ 
+ .notice{height:50px;line-height:50px}
+ .notice h2,.notice_tit{font-size:14px}
+ 
+ /*footer*/
+ 
+ #footer{padding-bottom:30px}
+ .footer_menu{height:50px;line-height:50px}
+ .footer_menu li a{font-size:12px;letter-spacing:-0.1em;padding-left:18px}
+ .footer_menu li a:after{top:18px;left:9px;height:12px}
+ 
+ .add{margin-top:60px;font-size:12px}
+ .sns{transform:scale(0.8);top:50px;left:-30px}
+ 
+ 
+ 
+ 
+}
