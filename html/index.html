@@ -14,7 +14,7 @@
  <!-- <link rel="stylesheet" href="../css/max1024.css" /> -->
  <!-- <link rel="stylesheet" href="../css/max767.css" /> -->
  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
- <!-- <script type="text/javascript" src="../js/web.js"></script> -->
+ <script type="text/javascript" src="../js/web.js"></script>
 </head>
 <body>
  <div id="wrapper">
@@ -93,13 +93,13 @@
    </ul>
    <table class="store_list">
     <caption class="skip">매장목록</caption>
-    <colgroup>
+    <!-- <colgroup>
      <col width="12%"/>
      <col width="12%"/>
      <col width="*%"/>
      <col width="18%"/>
      <col width="17%"/>
-    </colgroup>
+    </colgroup> -->
     <thead>
      <tr>
       <th scope="col" id="storeLocation">지역</th>
@@ -213,20 +213,24 @@
    <div class="contact_box">
     <div class="left">
      <h2 class="contact_tit">Contact Us</h2>
-     <form method="post" action="#" name="contact_frm">
-      <label for="userName">Name</label>
-      <input type="text" id="userName" name="userName" class="userName" placeholder=""/>
-      <label for="userPhone">Phone</label>
-      <input type="text" id="userPhone" name="userPhone" class="userPhone" placeholder=""/>
-      <label for="location">Location</label>
-      <input type="text" id="location" name="location" class="location" placeholder=""/>
-      <label for="email">Email</label>
-      <input type="text" id="email" name="email" class="email" placeholder=""/>
-      <label for="message">Message</label>
-      <input type="text" id="message" name="message" class="message" placeholder="남길말을 입력해 주세요(최대 50자)" maxlength="50"/>
-      <input type="radio" id="userAgree" name="userAgree"/>
-      <label for="userAgree">개인정보 수집 및 이용에 동의합니다.<a href="#">[개인정보수집및이용목적보기]</a><a href="#">[개인정보취급방침보기]</a></label>
-     </form>
+     <form method="post" action="#" name="contact_frm" class="contact_frm">
+       <div class="left_frm">
+         <label for="userName">Name</label>
+         <input type="text" id="userName" name="userName" class="userName" placeholder="이름을 입력해 주세요"/>
+         <label for="location">Location</label>
+         <input type="text" id="location" name="location" class="location" placeholder="지역을 입력해 주세요"/>
+       </div>
+       <div class="right_frm">
+         <label for="userPhone">Phone</label>
+         <input type="tel" id="userPhone" name="userPhone" class="userPhone" placeholder="연락처를 입력해 주세요"/>
+         <label for="email">Email</label>
+         <input type="text" id="email" name="email" class="email" placeholder="이메일 주소를 입력해 주세요"/>
+       </div>
+       <label for="message">Message</label>
+        <input type="text" id="message" name="message" class="message" placeholder="남길말을 입력해 주세요(최대 50자)" maxlength="50"/>
+        <input type="checkbox" id="userAgree" name="userAgree"/>
+        <label for="userAgree" class="userAgree">개인정보 수집 및 이용에 동의합니다 <a href="#">[개인정보수집및이용목적보기]</a><a href="#">[개인정보취급방침보기]</a></label>
+      </form>
      <button class="send">send</button>
     </div>
     <div class="right">
