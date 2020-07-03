@@ -114,8 +114,8 @@ html{overflow:hidden}
 /* event */
 
 .event{background:#111;padding:0 10%}
-.event_list{position:absolute;top:50%;transform:translateY(-50%)}
-.event_list li{width:52vw;height:65vh;float:left;margin-right:200px;opacity:0.5;position:relative;transition:all 1s ease}
+.event_list{position:absolute;top:50%;transform:translateY(-50%);width:125vw}
+.event_list li{width:52vw;height:65vh;float:left;margin-right:20vw;opacity:0.5;position:relative;transition:all 1s ease}
 .event_list li:last-child{margin-right:0}
 .event_list li:hover:before{content:'';position:absolute;top:0;left:0;border-top:80px solid #ec9100;border-right:80px solid transparent}
 .event_list li:hover:after{content:'';position:absolute;top:0;right:0;width:20px;height:100%;background-color:#ec9100}
@@ -165,7 +165,7 @@ input[type=checkbox]:checked + label:before{content:'';position:absolute;top:5px
 .userAgree a:hover{color:#ec9100}
 
 .send{display:block;position:absolute;left:0;bottom:0;width:75%;height:50px;line-height:50px;border:none;background-color:#ffe8c1;color:#ec9100;font-size:24px;cursor:pointer}
-.send:after{content:'';position:absolute;top:0;left:0;width:0;height:50px;background-color:#fff;opacity:0.8;transition:all .5s ease}
+.send:after{content:'';position:absolute;top:0;left:0;width:0;height:50px;background-color:#fff;opacity:0.5;transition:all .5s ease}
 .send:hover:after{width:100%;opacity:0}
 
 .contact_box .right a{background:url(../images/sns.png) no-repeat 0 0 / 160px;display:inline-block;width:80px;height:80px;margin-left:20px;margin-top:25px;font-size:0;opacity:0.8;transition:opacity .5s ease}

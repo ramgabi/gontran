@@ -30,33 +30,40 @@ function checkPageTop(pageNum){
   }
 }
 
-var eventLiWidth = $('.event_list li').width();
-var eventLiMargin = parseInt(($('.event_list li').css('marginRight')));
-var eventLiLength = $('.event_list li').length+1;
-var eventWidth = (eventLiWidth+eventLiMargin)*eventLiLength+'px';
+var eventShow = false;
 
-
-
-$(window).on('resize',function(){
-  $('.event_list').css('width',eventWidth)
-})
-
-function eventSlide(){
-  var eventShow = false;
-  if(eventShow){
-    
+function eventDownSlide(){
+  if(!eventShow){
+    $('.event_list').animate({
+      right:'5%'
+    },1000);
+    eventShow = true;
+  }else{
+    menuLi.eq(++pageNum).find('a').trigger('click');
   }
 }
 
+function eventUpSlide(){
+  if(eventShow){
+    $('.event_list').animate({
+      right:'-35%'
+    },1000);
+    eventShow = false;
+  }else{
+    menuLi.eq(--pageNum).find('a').trigger('click');
+  }
+}
+
+const menuLi = $('.menu_list li');
+
 function WheelDirection(delta){
-  const menuLi = $('.menu_list li');
 
   if(delta > 0 && pageNum > 0){
     if(pageNum == 5){
       showFooter();
       pageNum--;
     }else if(pageNum == 3){
-      eventSlide()
+      eventUpSlide()
     }else{
       menuLi.eq(--pageNum).find('a').trigger('click');
     }
@@ -64,6 +71,8 @@ function WheelDirection(delta){
     if(pageNum == 4){
       showFooter();
       pageNum++;
+    }else if(pageNum == 3){
+      eventDownSlide()
     }else{
       menuLi.eq(++pageNum).find('a').trigger('click');
     }
@@ -72,7 +81,7 @@ function WheelDirection(delta){
 
 $(window).on('mousewheel',function(e){
   var delta = e.originalEvent.wheelDelta;
-  if(!$('html,body').is(':animated')){
+  if(!$('html,body').is(':animated') && !$('.event_list').is(':animated')){
     WheelDirection(delta);
   } 
 })
@@ -192,14 +201,31 @@ $('.ingre_btn li').on('click',function(e){
 
 /* store */
 
-// const storeList = ['서울','인천','경기','경남','부산','충남','대구','강원','제주']
-
 $('.location li a').on('click',function(e){
   e.preventDefault();
   $(this).parent().toggleClass('on')
 })
 
+/* contact */
 
+checkInputVal('text');
+checkInputVal('tel');
 
+function checkInputVal(type){
+  $('input[type='+type+']').keyup(function(){
+    if(!$(this).val()==''){
+      $(this).prev('label').css('color','#ec9100')
+    }else{
+      $(this).prev('label').css('color','#555')
+    }
+  })
+}
+
+/* footer */
+
+  $('#footer .top').on('click',function(){
+    $('.menu_list li a:first').trigger('click');
+    showFooter()
+  })
 
 })
