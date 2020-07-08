@@ -190,7 +190,15 @@ $event_list.parent().on({
 
 //mobile
 
+const $section = $('.section')
 
+forMobile();
+
+function forMobile(){
+  if(!isMobile){
+    $section.hide().eq(0).show()
+  }
+}
 
 
 //scroll menu
@@ -233,12 +241,14 @@ visualLength = $visual_cont.length-1;
 slideBar();
 
 function slideBar(){
-  if(!isMobile){
+  if(isWeb){
     $visual_bar.stop().css('width',0).animate({
       width:'100vw'
     },8000,function(){
       $visual_bar.css('width',0)
     })
+  }else{
+    return;
   }
 }
 

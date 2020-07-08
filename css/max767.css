@@ -16,7 +16,7 @@
   /* container */
  
  html{overflow-y:scroll;background-color:#111}
- #wrapper{min-width:320px;min-height:initial}
+ #wrapper{min-width:320px;height:150vw}
  #wrapper > section,#wrapper > article{height:150vw;position:absolute;top:90px;left:0}
 
 /* visual */
@@ -92,19 +92,26 @@
 
 /* contact */
 
-.contact_box{width:90%;height:70%;height:500px}
+#wrapper .contact{min-height:0}
+.contact_box{width:90%;height:70%;min-height:450px}
 .contact_box .left{width:100%;float:none;padding:0}
 .contact_box .right{display:none}
 
-.contact_tit{color:#fff;background-color:#ec9100;height:70px;line-height:70px;padding:0 5%}
-.contact_frm{padding:0 5%}
-.left_frm{width:40%;float:none;}
-.right_frm{width:100%;float:none}
+.contact_frm{margin-top:20px;padding:0 5%}
+.left_frm,.right_frm{width:100%;float:none}
 
+.contact_tit{color:#fff;background-color:#ec9100;height:50px;line-height:50px;padding:0 5%}
+.contact_frm label{margin-bottom:5px}
+.contact_frm input{margin-bottom:18px}
+
+.userAgree a{display:none}
+.userAgree a.agree_m{display:inline-block}
+
+.send{width:100%}
 
 /* footer */
 
-#footer{position:relative;margin-top:150vw;padding-top:25px;z-index:-1;height:calc(100vh - 150vw - 90px)}
+#footer{position:relative;margin-top:150vw;padding-top:25px;z-index:-1}
 #footer .top{display:none}
 #footer .footer_logo{margin-bottom:20px}
 

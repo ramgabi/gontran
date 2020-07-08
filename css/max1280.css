@@ -31,10 +31,7 @@ html{overflow-y:scroll}
  .visual_btn a.prev_btn:after{left:62px}
  .visual_btn a.next_btn:after{left:18px}
  
- .visual_num{top:75%;left:54%}
- .visual_num a{width:2.5vw;height:2.5vw;margin-right:1vw}
-
- .visual_bar{height:5px}
+ .visual_num{display:none}
 
  /* ingre */
 
@@ -113,6 +110,7 @@ input[type=checkbox]:checked + label:before{top:3px;left:4px;border-width:1px;wi
 .userAgree a{font-size:9px}
 
 .send{height:35px;line-height:35px;font-size:16px}
+.send:after{height:35px}
 
 .contact_box .right a{width:50px;height:50px;background-size:100px;margin-left:15px}
 .contact_box .right a:nth-of-type(2){background-position:-50px 0}
