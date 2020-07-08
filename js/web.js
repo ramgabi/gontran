@@ -1,5 +1,33 @@
 $(document).ready(function(){
  
+// 반응형 대응
+
+const $window = $(window);
+var checkSid,
+isWeb,
+isTab,
+isMobile,
+windowHeight,
+windowWidth;
+
+checkSize();
+
+function checkSize(){
+  windowWidth = $window.width();
+  windowHeight = $window.height();
+  isWeb = false;
+  isTab = false;
+  isMobile = false;
+  if(windowWidth >= 1280){
+    isWeb = true;
+  }else if(windowWidth >= 768 && windowWidth <= 1280){
+    isTab = true;
+  }else{
+    isMobile = true;
+  }
+  slideBar();
+}
+
 /*gnb & scroll*/
 
 var pageNum = 0, 
@@ -25,9 +53,10 @@ function showFooter(){
 }
 
 function scrollPage(pageTop){
-  $htmlBody.animate({
+  $htmlBody.stop().animate({
     scrollTop:pageTop
   },1500)
+  clearInterval(CheckScroll);
 }
 
 function checkPageTop(pageNum){
@@ -38,14 +67,26 @@ function checkPageTop(pageNum){
   }
 }
 
+
+function moveEventRight(){
+  $event_list.stop().animate({
+    right:'5%'
+  },1000);
+  eventShow = true;
+}
+
+function moveEventLeft(){
+  $event_list.stop().animate({
+    right:'-35%'
+  },1000);
+  eventShow = false;
+}
+
 var eventShow = false;
 
 function eventDownSlide(){
   if(!eventShow){
-    $event_list.animate({
-      right:'5%'
-    },1000);
-    eventShow = true;
+    moveEventRight();
   }else{
     $menuLi.eq(++pageNum).find('a').trigger('click');
   }
@@ -53,10 +94,7 @@ function eventDownSlide(){
 
 function eventUpSlide(){
   if(eventShow){
-    $event_list.animate({
-      right:'-35%'
-    },1000);
-    eventShow = false;
+    moveEventLeft();
   }else{
     $menuLi.eq(--pageNum).find('a').trigger('click');
   }
@@ -87,7 +125,7 @@ function WheelDirection(delta){
 }
 
   
-$('.menu_list li').each(function(num){
+$menuLi.each(function(num){
   $(this).find('a').on('click',function(e){
     e.preventDefault();
     if(!$htmlBody.is(':animated')){
@@ -95,51 +133,89 @@ $('.menu_list li').each(function(num){
       checkPageTop(num);
       pageNum=num;
     }
+    clearInterval(CheckScroll);
   })
 })
 
-
-// 반응형 대응
-
-const $window = $(window);
-var checkSid,
-isWeb;
-
-checkWidth();
-
-function checkWidth(){
-  var windowWidth = $window.width();
-  if(windowWidth >= 1280){
-    isWeb = true;
-  }else{
-    isWeb = false;
-  }
-  checkWeb();
-}
-
 $window.on('resize',function(){
  clearInterval(checkSid)
- checkSid = setTimeout(checkWidth,500)
+ checkSid = setTimeout(checkSize,500)
 })
 
-function checkWeb(){
-  if(isWeb){
-    jsForWeb();
-  }else{
-    return;
-  }
-}
-
-function jsForWeb(){
-
-  $(window).on('mousewheel',function(e){
+$window.on('mousewheel',function(e){
     var delta = e.originalEvent.wheelDelta;
     if(!$htmlBody.is(':animated') && !$event_list.is(':animated') && isWeb){
       WheelDirection(delta);
     } 
   })
-  return;
+
+//tablet
+
+var touchStartX,
+touchEndX,
+CheckScroll;
+
+function checkEventWay(){
+  var touchCal = touchEndX-touchStartX
+  if(touchCal < 0){
+    moveEventRight();
+  }else{
+    moveEventLeft();
+  }
 }
+
+$event_list.parent().on({
+  touchstart:function(e){
+    touchStartX = e.originalEvent.changedTouches[0].pageX;
+  },
+  touchend:function(e){
+    touchEndX = e.originalEvent.changedTouches[0].pageX;
+    if(isTab){
+      checkEventWay();
+    }
+  }
+})
+
+$event_list.parent().on({
+  mousedown:function(e){
+    touchStartX = e.pageX;
+  },
+  mouseup:function(e){
+    touchEndX = e.pageX;
+    if(isTab){
+      checkEventWay();
+    }
+  }
+})
+
+//mobile
+
+
+
+
+//scroll menu
+
+checkMenu();
+
+function checkMenu(){
+  var scrollPos = $window.scrollTop();
+  const pageContLength = pageContents.length-1
+  
+  for(var i = 0 ; i <= pageContLength; i++ ){
+    if(scrollPos > pageContents[i].offset().top-(windowHeight/3)){
+      var scrollLi = $menuLi.eq(i).find('a');
+      showMenuColor(scrollLi);
+      currentPageNum=scrollLi.parent().index();
+      pageNum=scrollLi.parent().index();
+    }
+  }
+}
+
+$window.on('scroll',function(){
+  clearInterval(CheckScroll);
+  CheckScroll = setTimeout(checkMenu,500);
+})
+
 
 
 /* visual banner */
@@ -150,18 +226,20 @@ $visual_num = $('.visual_num'),
 $visual_btn = $('.visual_btn');
 
 
-var visualSid=setInterval(nextVisual,5000),
+var visualSid=setInterval(nextVisual,8000),
 visualNum = 0,
 visualLength = $visual_cont.length-1;
 
 slideBar();
 
 function slideBar(){
-  $visual_bar.stop().css('width',0).animate({
-    width:'100vw'
-  },5000,function(){
-    $visual_bar.css('width',0)
-  })
+  if(!isMobile){
+    $visual_bar.stop().css('width',0).animate({
+      width:'100vw'
+    },8000,function(){
+      $visual_bar.css('width',0)
+    })
+  }
 }
 
 function visualBtnNum(num){
@@ -219,7 +297,7 @@ function checkDirection(btnClassName){
 $visual_btn.find('a').on('click',function(e){
   e.preventDefault();
   clearInterval(visualSid);
-  visualSid=setInterval(nextVisual,5000);
+  visualSid=setInterval(nextVisual,8000);
   if(!$visual_cont.is(':animated')){
     checkDirection(this.className);
   }
@@ -228,7 +306,7 @@ $visual_btn.find('a').on('click',function(e){
 $visual_num.find('a').on('click',function(e){
   e.preventDefault();
   clearInterval(visualSid);
-  visualSid=setInterval(nextVisual,5000);
+  visualSid=setInterval(nextVisual,8000);
   if(!$visual_cont.is(':animated') && !$(this).hasClass('on')){
     nextSlide($(this).index());
     visualNum=$(this).index();
@@ -281,9 +359,13 @@ function checkInputVal(type){
 
 const $footerTop = $('#footer .top');
 
-  $footerTop.on('click',function(){
+  $footerTop.on('click',function(e){
+    e.preventDefault();
+    clearInterval(CheckScroll);
+    if(isWeb){
+      showFooter();
+    }
     $menuLi.find('a:first').trigger('click');
-    showFooter();
   })
 
 })
