@@ -5,19 +5,17 @@
 
  /* header */
 
- #header{height:90px;position:relative;background-color:#111;overflow:hidden;padding:0}
- #header .logo{width:100%;height:60px;text-align:center;float:initial}
- .menu_list{width:200%;margin-top:0;height:30px;background-color:#ec9100;float:initial;padding:0 2%}
- .menu_list li{margin-left:0;height:100%}
- .menu_list li a{font-size:15px;height:100%;line-height:30px;opacity:0.5;padding:0 10px}
- .menu_list li a:before{display:none}
- .menu_list li.on a{opacity:1}
+ #header{height:100px;position:relative;background-color:#111;overflow:hidden;padding:0}
+ #header .logo{width:100%;height:100px;line-height:100px;text-align:center;float:initial}
+ #header .logo img{width:auto;height:8vw}
+ .menu_list{display:none}
  
   /* container */
  
  html{overflow-y:scroll;background-color:#111}
- #wrapper{min-width:320px;height:150vw}
- #wrapper > section,#wrapper > article{height:150vw;position:absolute;top:90px;left:0}
+ body{overflow-x:hidden;width:100vw}
+ #wrapper{min-width:320px;height:100%}
+ #wrapper > section,#wrapper > article{height:150vw;position:relative}
 
 /* visual */
 
@@ -37,15 +35,15 @@
 
 /* ingre */
 
-.ingre{background-position:center;padding:0;display:none}
+.ingre{background-position:center;padding:0}
 
-.ingre .ingre_btn{margin-top:30px;height:50vw;min-height:180px}
+.ingre .ingre_btn{padding-top:30px;height:50vw;min-height:180px}
 .ingre .ingre_btn li{width:70vw;height:50vw}
 .ingre_btn li.left{left:-40vw}
 .ingre_btn li.right{right:-40vw}
 .ingre .ingre_btn li.on{display:block;margin-left:-35%}
 
-.ingre_list{margin-top:20px}
+.ingre_list{margin-top:50px}
 .ingre_sub{font-size:4vw;margin-bottom:25px}
 .ingre_sub:before{width:90%;margin-left:-45%;height:5px}
 
@@ -55,29 +53,29 @@
 
 /* store */
 
-.store{padding:25px 5%}
-.store h2{margin-bottom:20px}
+.store{padding:12vw 5%}
+.store h2{margin-bottom:20px;font-size:9vw}
 .store_frm{display:none}
 
-.location li a{font-size:3.5vw;padding:1.8vw 4.2vw;margin-bottom:12px}
+.location li a{font-size:3.5vw;padding:1.8vw 4.2vw;margin:0 1vw 10px}
 
 .store_list{display:none}
 
 .store_list_m{display:block;color:#fff;border-bottom:1px solid #ec9100;margin-top:8px}
-.store_info_m{width:100%;height:50px;border-top:1px solid #ec9100;border-bottom:1px solid #d9d9d9;line-height:50px;font-size:15px;padding:0 10px}
-.store_loc_m{display:inline-block;background-color:#ec9100;height:25px;line-height:25px;padding:0 8px}
+.store_info_m{width:100%;height:13vw;border-top:1px solid #ec9100;border-bottom:1px solid #d9d9d9;line-height:13vw;font-size:4vw;padding:0 10px}
+.store_loc_m{display:inline-block;background-color:#ec9100;height:6.5vw;line-height:6.5vw;padding:0 8px}
 .store_name_m{margin:0 7px}
 .service{display:inline-block;line-height:30px}
 
-.store_info2_m{width:100%;height:60px;line-height:35px;padding:0 8px;font-size:12px}
+.store_info2_m{width:100%;height:14vw;line-height:9vw;padding:0 8px;font-size:3vw}
 .store_tel_m{display:block;line-height:0;margin-top:5px;color:#ec9100}
 
 
 /* event */
 
 .event{padding:0 5%}
-.event_list{position:relative;transform:translate(0);top:initial;width:100%}
-.event_list li{position:relative;width:100%;float:none;margin:30px 0;opacity:1;height:60vw}
+.event_list{position:static;transform:translate(0);top:initial;width:100%;height:100%;padding:10% 0}
+.event_list li{position:relative;width:100%;float:none;margin:10% 0;opacity:1;height:40%}
 
 .event_list li:before{display:none}
 .event_list li:after{content:'';position:absolute;top:0;right:0;width:10px;height:100%;background-color:#ec9100}
@@ -93,25 +91,26 @@
 /* contact */
 
 #wrapper .contact{min-height:0}
-.contact_box{width:90%;height:70%;min-height:450px}
+.contact_box{width:90%;height:80%;min-height:440px}
+.contact_box.on{transform:translate(-50%,-50%)}
 .contact_box .left{width:100%;float:none;padding:0}
 .contact_box .right{display:none}
 
-.contact_frm{margin-top:20px;padding:0 5%}
+.contact_frm{margin-top:5vw;padding:0 5%}
 .left_frm,.right_frm{width:100%;float:none}
 
-.contact_tit{color:#fff;background-color:#ec9100;height:50px;line-height:50px;padding:0 5%}
-.contact_frm label{margin-bottom:5px}
-.contact_frm input{margin-bottom:18px}
+.contact_tit{color:#fff;background-color:#ec9100;height:12vw;line-height:12vw;padding:0 5%;font-size:6vw}
+.contact_frm label{margin-bottom:2vw;font-size:3vw}
+.contact_frm input{margin-bottom:5vw;font-size:3vw}
 
 .userAgree a{display:none}
 .userAgree a.agree_m{display:inline-block}
 
-.send{width:100%}
+.send{width:100%;height:10vw;font-size:5vw}
 
 /* footer */
 
-#footer{position:relative;margin-top:150vw;padding-top:25px;z-index:-1}
+#footer{position:relative;padding-top:25px;z-index:-1}
 #footer .top{display:none}
 #footer .footer_logo{margin-bottom:20px}
 

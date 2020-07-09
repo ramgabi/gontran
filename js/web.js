@@ -1,15 +1,20 @@
 $(document).ready(function(){
  
-// 반응형 대응
+  // 반응형 대응
+  
+  const $window = $(window),
+  $visual_cont = $('.visual_cont'),
+  $visual_bar = $('.visual_bar'),
+  $visual_num = $('.visual_num'),
+  $visual_btn = $('.visual_btn');
 
-const $window = $(window);
-var checkSid,
-isWeb,
-isTab,
-isMobile,
-windowHeight,
-windowWidth;
 
+  var checkSid,
+  isWeb,
+  isTab,
+  windowHeight,
+  windowWidth;
+  
 checkSize();
 
 function checkSize(){
@@ -20,12 +25,11 @@ function checkSize(){
   isMobile = false;
   if(windowWidth >= 1280){
     isWeb = true;
+    slideBar();
   }else if(windowWidth >= 768 && windowWidth <= 1280){
     isTab = true;
-  }else{
-    isMobile = true;
+    $visual_bar.stop().css('width','0');
   }
-  slideBar();
 }
 
 /*gnb & scroll*/
@@ -190,17 +194,6 @@ $event_list.parent().on({
 
 //mobile
 
-const $section = $('.section')
-
-forMobile();
-
-function forMobile(){
-  if(!isMobile){
-    $section.hide().eq(0).show()
-  }
-}
-
-
 //scroll menu
 
 checkMenu();
@@ -227,12 +220,6 @@ $window.on('scroll',function(){
 
 
 /* visual banner */
-
-const $visual_cont = $('.visual_cont'),
-$visual_bar = $('.visual_bar'),
-$visual_num = $('.visual_num'),
-$visual_btn = $('.visual_btn');
-
 
 var visualSid=setInterval(nextVisual,8000),
 visualNum = 0,

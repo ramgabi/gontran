@@ -14,6 +14,7 @@
  /* container */
 
 html{overflow-y:scroll}
+body{overflow-x:hidden;width:100vw}
 #wrapper{min-width:768px;min-height:initial;position:relative}
 #wrapper > section,#wrapper > article{min-height:540px;height:60vw}
  
